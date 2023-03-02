@@ -5,17 +5,7 @@
 // dms(0);            // 0°00'00"
 // dms(360);          // 360°00'00" or 0°00'00"
 
-// function dms(num){
-//     if(Number.isInteger(num)){
-//         return console.log(`${num}°00'00"`)
-//     }else{
-//         let minutes = (num-Math.floor(num))*60
-//         let seconds = (minutes- Math.floor(minutes))*60 ; 
-//         return console.log(`${Math.floor(num)}°${String(Math.floor(minutes)).length ===1 ? 
-//             `0${Math.floor(minutes)}`:Math.floor(minutes)}'${String(Math.floor(seconds)).length ===1 ? 
-//                 `0${Math.floor(seconds)}`:Math.floor(seconds)}`)
-//     }
-// }
+
 
 // console.log(union([1, 3, 5], [3, 6, 9]));    // [1, 3, 5, 6, 9]
 // function union(arr1, arr2){
@@ -161,6 +151,18 @@
 //    return Math.floor(average/arr.length); 
 // }
 
+// The time of day can be represented as the number of minutes before 
+// or after midnight. If the number of minutes is positive, the time is 
+// after midnight. If the number of minutes is negative, the time is before 
+// midnight.
+
+// Write a function that takes a time using this minute-based format and returns
+//  the time of day in 24 hour format (hh:mm). Your function should work with 
+//  any integer input.
+
+
+
+
 console.log(timeOfDay(0) === "00:00");
 console.log(timeOfDay(-3) === "23:57");
 console.log(timeOfDay(35) === "00:35");
@@ -170,29 +172,16 @@ console.log(timeOfDay(800) === "13:20");
 console.log(timeOfDay(-4231) === "01:29");
 
 function timeOfDay(num){
-    let hours = Math.abs(num)>60 ? Math.floor(num/60) : 0;
-    if(String(Math.abs(hours)).length ===1 ) hours = `0${Math.floor(num/60)}`
+    let minutes =0; 
+    let hours = 0; 
+    Math.abs(num)>60 ? minutes = num%60 : minutes = num
+    Math.abs(num)>60 ? hours = Math.floor(num/60) : hours = 0 
 
-    let minutes = Math.abs(num)<60 ? num : num%60;
-    if(String(Math.abs(minutes)).length ===1 ) minutes = `0${Math.floor(num/60)}`
-    let time = [String(hours), ":", String(minutes)]
+    //if -neg before midnight 
+    //if + after midnight 
+   
+       minutes = 60 + minutes; 
+       if(hours>0) hours = 12 - hours;
 
-   if(Math.abs(hours) > 24){
-        while(Math.abs(hours)>24){
-            hours=Math.abs(hours)-24
-        }     
-        time[0] = String(hours)
-        
-    }else if(Math.abs(minutes)<60){
-        time[2] = String(minutes)
-    }else if(Math.abs(hours)>24){
-        time[0] = hours<0 ? 24-hours : hours;
-
-    }
-    
-    if(minutes<0){
-        time[1] = 60-Math.abs(minutes);
-    }
-
-    return console.log(time)
+    console.log(`${hours}:${minutes}`)
 }

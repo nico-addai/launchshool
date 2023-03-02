@@ -204,9 +204,21 @@ The dog quickly walks up blue Joe's turtle.
 
 // teddy()
 
-What is your age? 30
-At what age would you like to retire? 70
+// function ageProgram(){
+//     const readline = require('readline-sync');
+//     const prompt = str => console.log(`==>`, str)
 
-It's 2017. You will retire in 2057.
-You have only 40 years of work to go!
+//     let currentAge = readline.question(prompt(`What is your age?`))
+//     let retiredAge = readline.question(prompt(`At what age would you like to retire?`))
+
+//     let currentYear = new Date()
+//     let year = currentYear.getFullYear();
+//     let retireYear = Number(year) + (Number(retiredAge)- Number(currentAge))
+
+//     return console.log(`It's ${year}. You will retire in ${retireYear}.
+//     You have only ${Number(retiredAge)- Number(currentAge)} years of work to go!`)
+
+// }
+
+// ageProgram()
 

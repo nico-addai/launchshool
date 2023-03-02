@@ -101,25 +101,25 @@
 //object is the count of each word 
 //if an empty string, return an empty object 
 
-function wordSizes(str){
-    let result = {}
-    let count = 1; 
-    let punct = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+// function wordSizes(str){
+//     let result = {}
+//     let count = 1; 
+//     let punct = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
     
-    if(!str) return console.log(result); 
+//     if(!str) return console.log(result); 
 
-    str.split(' ').map(word=>{
-        word =  (word.split('').filter(letter => punct.includes(letter))).join('')
-        //note the importance of tracking how you increment your word length 
-        result[word.length] ? result[word.length] +=1 : result[word.length] = count
-    })
-    console.log(result); 
-}
+//     str.split(' ').map(word=>{
+//         word =  (word.split('').filter(letter => punct.includes(letter))).join('')
+//         //note the importance of tracking how you increment your word length 
+//         result[word.length] ? result[word.length] +=1 : result[word.length] = count
+//     })
+//     console.log(result); 
+// }
 
-wordSizes('Four score and seven.');                       // { "3": 1, "4": 1, "5": 1, "6": 1 }
-wordSizes('Hey diddle diddle, the cat and the fiddle!');  // { "3": 5, "6": 1, "7": 2 }
-wordSizes("What's up doc?");                              // { "2": 1, "4": 1, "6": 1 }
-wordSizes('');                                            // {}
+// wordSizes('Four score and seven.');                       // { "3": 1, "4": 1, "5": 1, "6": 1 }
+// wordSizes('Hey diddle diddle, the cat and the fiddle!');  // { "3": 5, "6": 1, "7": 2 }
+// wordSizes("What's up doc?");                              // { "2": 1, "4": 1, "6": 1 }
+// wordSizes('');                                            // {}
 
 // swap('Oh what a wonderful day it is');  // "hO thaw a londerfuw yad ti si"
 // swap('Abcde');                          // "ebcdA"
@@ -137,3 +137,20 @@ wordSizes('');                                            // {}
 //         })
 //    return result.join(' ')
 // }
+
+// const stringToInteger = num => num*1; 
+
+// console.log(stringToInteger("4321") === 4321); // logs true
+// console.log(stringToInteger("570") === 570); // logs true
+
+// const stringToSignedInteger = num => num*1; 
+// console.log(stringToSignedInteger("4321") === 4321); // logs true
+// console.log(stringToSignedInteger("-570") === -570); // logs true
+// console.log(stringToSignedInteger("+100") === 100); // logs true
+
+const integerToString = num => console.log(typeof `${num}`)
+
+integerToString(4321);        // "4321"
+integerToString(0);           // "0"
+integerToString(5000);        // "5000"
+integerToString(1234567890);  // "1234567890"

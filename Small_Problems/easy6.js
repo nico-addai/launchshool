@@ -180,15 +180,19 @@ console.log(isBalanced("What ((is))) up(") === false);
 
 function isBalanced(str){
   
-  if(!str.includes('(') && !str.includes(')')) return true
+  // if(!str.includes('(') && !str.includes(')')) return true
 
   for(let i=0; i<str.length; i++){
     let startWith = false; 
+    let firstCharIndex =0; 
+    let closeCharIndex =0; 
     for(let i=0; i<str.length; i++){
     if(str[i]==='('){
       startWith=true
+      firstCharIndex=i; 
       continue
     }else if(str[i]===')' && startWith){
+      closeCharIndex=i; 
       startWith=false
     }else if(!str.substring(i).includes(')')){
       startWith=false
@@ -196,8 +200,14 @@ function isBalanced(str){
       startWith=false
     }
   }
-    if(!startWith) return true 
-    else return false
-  }
+  //if the index of ')' is less than the index of '(' return false
+
+  if(closeCharIndex>firstCharIndex && !startWith){
+    return false 
+  }else{
+  if(!startWith) return true 
+      else return false
+    }
+  } 
  
 }

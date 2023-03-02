@@ -34,6 +34,26 @@
     
 // }
 
+rotateRightmostDigits(735291, 1);      // 735291
+rotateRightmostDigits(735291, 2);      // 735219
+rotateRightmostDigits(735291, 3);      // 735912
+rotateRightmostDigits(735291, 4);      // 732915
+rotateRightmostDigits(735291, 5);      // 752913
+rotateRightmostDigits(735291, 6);      // 352917
+
+// function rotateRightmostDigits(num, rotate){
+//     if(rotate===1) return console.log(num)
+    
+//     let strNum = String(num).split('');
+//     const strLength = strNum.length;  
+//     let rotateItem = strNum.pop(); 
+//     // console.log(strNum)
+
+//     strNum.splice(strLength-rotate, 0, rotateItem);
+//     // Inserts at index 1
+//     console.log(strNum.join(''));
+  
+// }
 
 // letterPercentages('abCdef 123');
 // // { lowercase: "50.00", uppercase: "10.00", neither: "40.00" }
@@ -110,15 +130,15 @@ function wordToDigit(str){
     let result = []; 
    // console.log(words.filter(word => word =! words.includes(numWords(keys))))
     for(let i=0; i<words.length; i++){
-        result.push(words[i]); 
-        
-        if(numWords.hasOwnProperty(words[i])){
-         
+        if(Object.keys(numWords).includes(words[i])){
            result.push(numWords[words[i]]) 
-        }
+        }else{
+            console.log(words[i].includes(Object.keys(numWords)))
+            result.push(words[i])
+        }; 
     }
     
-    return result.join(' '); 
+    return console.log(result.join(' ')); 
 }
 
 
@@ -274,10 +294,67 @@ function wordToDigit(str){
 
 // }
 
-fridayThe13ths(1986);      // 1
-fridayThe13ths(2015);      // 3
-fridayThe13ths(2017);      // 2
+rotateRightmostDigits(735291, 1);      // 735291
+//735291 -> 1 -> -----1
+rotateRightmostDigits(735291, 2);      // 735219
+//735291 -> 1 -> ----19
+rotateRightmostDigits(735291, 3);      // 735912
+//735291 -> 1 -> ---912
+rotateRightmostDigits(735291, 4);      // 732915
+//735291 -> 1 -> --2915
+rotateRightmostDigits(735291, 5);      // 752913
+//735291 -> 1 -> -52913
+rotateRightmostDigits(735291, 6);      // 352917
+//735291 -> 1 -> 352917
 
-function fridayThe13ths(year){
-    
+//PEDAC
+//takes two arguments, two numbers, returns one number 
+//make the number an array 
+//use the array to recreate the pattern of the testcases 
+        // Pop the rightmost number 
+        //73529 - 1 -> insert at second to last position -> 735291
+        //73529 - 1-> 735291 -> 
+//join the array 
+//return a number 
+
+function rotateRightmostDigits(number, rotation) {
+    let strArray = String(number).split("");
+    let index = strArray.length - rotation;
+    let last = strArray.splice(index, 1);
+  
+    return console.log(Number(strArray.concat(last).join("")));
+  }
+
+  function maxRotation(num){
+    // 0 2 4 0 4 - > 135204
+       let numArr = String(num).split(''); 
+   
+       let numLength = numArr.length; 
+       for(let count=numLength; count>=2; count--){
+           let spliceNum = numArr.splice(numLength-count,1)
+       numArr.push(...spliceNum)
+       } 
+       return Number(numArr.join(''))
+   }
+   
+   console.log(maxRotation(735291)== 321579)
+   console.log(maxRotation(3)=== 3)
+   console.log(maxRotation(35)=== 53)
+   console.log(maxRotation(105)=== 15) //-- the leading zero gets dropped
+   console.log(maxRotation(8703529146)=== 7321609845)
+
+   function fibonacci(num){
+    // first couple of num of fib 
+    // 1 1 2 3 5 8 
+    let fib1 = [1, 1]
+    let total = 0 
+    for(let i=0; i<num-2; i++){
+        fib1.push(fib1[fib1.length-1]+fib1[fib1.length-2])
+    }
+    return console.log(fib1[fib1.length-1])
 }
+
+
+fibonacci(20);       // 6765
+fibonacci(50);       // 12586269025
+fibonacci(75);       // 2111485077978050
